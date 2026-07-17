@@ -28,6 +28,15 @@ I analyzed 400K+ question pairs (Quora Question Pairs dataset) and built a model
 | LogLoss | 0.3875 |
 | Deployment | AWS EC2, FastAPI + Streamlit |
 
+## Demo
+
+**Duplicate pair detected:**
+
+![Duplicate example](duplicate.png)
+
+**Different questions — correctly not flagged:**
+
+![Not duplicate example](not-duplicate.png)
 ## 🛠 Tech Stack
 
 Python · Sentence-Transformers · scikit-learn · FastAPI · Streamlit · AWS EC2 · pytest
