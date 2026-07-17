@@ -28,7 +28,7 @@ I analyzed 400K+ question pairs (Quora Question Pairs dataset) and built a model
 | LogLoss | 0.3875 |
 | Deployment | AWS EC2, FastAPI + Streamlit |
 
-## Demo
+## 🖥 Demo
 
 **Duplicate pair detected:**
 
