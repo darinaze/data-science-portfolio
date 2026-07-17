@@ -29,6 +29,16 @@ Using data on 41K clients (profile, contact history, economic context), I:
 | Recall (subscribers found) | ~65% |
 | F1 after business rules | 0.50 → 0.53 |
 
+## 📊 Model Insights
+
+**What drives client decisions (SHAP analysis):**
+
+![SHAP analysis](shap.png)
+
+**Model comparison — LightGBM wins:**
+
+![Model comparison](models_comparison.png)
+
 ## 🛠 Tech Stack
 
 Python · scikit-learn · LightGBM · Hyperopt · SHAP · Pandas · Seaborn
