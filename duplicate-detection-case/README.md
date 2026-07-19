@@ -43,6 +43,6 @@ Python · Sentence-Transformers · scikit-learn · FastAPI · Streamlit · AWS E
 
 ---
 
-🔗 **Full technical implementation:** [duplicate-question-detection](https://github.com/darinaze/duplicate-question-detector)
+🔗 **Full technical implementation:** [duplicate-question-detection](https://github.com/darinaze/duplicate-question-detection)
 
 *Built on the open Quora Question Pairs dataset.*
