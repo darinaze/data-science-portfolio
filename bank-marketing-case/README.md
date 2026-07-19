@@ -11,7 +11,7 @@ A bank runs phone campaigns selling term deposits, but only ~11% of calls end in
 Using data on 41K clients (profile, contact history, economic context), I:
 
 - Ran full exploratory analysis and feature engineering
-- Tested 5 ML algorithms (Logistic Regression, kNN, Decision Tree, LightGBM with hyperparameter tuning)
+- Tested 4 ML algorithms (Logistic Regression, kNN, Decision Tree, LightGBM with hyperparameter tuning)
 - Added business rules — e.g., stop calling after 5 attempts, since more calls almost never convert
 - Made every prediction explainable with SHAP — the bank sees *why* each client got their score
 
@@ -25,7 +25,7 @@ Using data on 41K clients (profile, contact history, economic context), I:
 
 | Metric | Value |
 |---|---|
-| ROC AUC | 0.815 (best of 5 algorithms) |
+| ROC AUC | 0.815 (best of 4 algorithms) |
 | Recall (subscribers found) | ~65% |
 | F1 after business rules | 0.50 → 0.53 |
 
