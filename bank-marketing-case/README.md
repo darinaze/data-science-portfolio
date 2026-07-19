@@ -45,6 +45,6 @@ Python · scikit-learn · LightGBM · Hyperopt · SHAP · Pandas · Seaborn
 
 ---
 
-🔗 **Full technical implementation:** [bank-marketing-prediction](https://github.com/darinaze/Bank-marketing-prediction-)
+🔗 **Full technical implementation:** [bank-marketing-prediction](https://github.com/darinaze/Bank-marketing-prediction)
 
 *Built on the open UCI Bank Marketing dataset.*
