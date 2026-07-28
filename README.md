@@ -63,7 +63,7 @@ I am a Data Scientist and Machine Learning Engineer working in Python across cla
 **Tech:** Python · Sentence-Transformers · scikit-learn · FastAPI · Streamlit · AWS EC2 · pytest
 **Data:** open Quora Question Pairs dataset (400K+ pairs)
 
-🔗 [Case details](./duplicate-detection-case) · [Code](https://github.com/darinaze) · *(add: live demo link)*
+🔗 [Case details](./duplicate-detection-case) · [Code](https://github.com/darinaze) · *(live demo link http://34.234.83.233:8501)*
 
 ---
 
