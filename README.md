@@ -127,6 +127,6 @@ I am a Data Scientist and Machine Learning Engineer working in Python across cla
 
 - 📧 **Email:** darinazelenska@gmail.com
 - 💼 **LinkedIn:** [linkedin.com/in/daryna-zelenska](https://www.linkedin.com/in/daryna-zelenska)
-- 🟢 **Upwork:** *(додай посилання на свій профіль)*
+- 🟢 **Upwork:** *(TBA)*
 
 > Looking for a Data Scientist / Machine Learning Engineer / AI Engineer who ships accurate, production-ready models? Let's turn your data into a real advantage.
