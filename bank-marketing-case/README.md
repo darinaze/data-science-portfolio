@@ -76,7 +76,7 @@ Python · pandas · scikit-learn · **LightGBM** · Hyperopt · **SHAP** · Seab
 - `…` — SHAP and model-comparison charts
 - Data: open **UCI Bank Marketing** dataset
 
-🔗 **Full technical implementation:** [bank-marketing-prediction](https://github.com/darinaze) · ⬅️ [Back to portfolio](../README.md)
+🔗 **Full technical implementation:** [bank-marketing-prediction](https://github.com/darinaze/Bank-marketing-prediction) · ⬅️ [Back to portfolio](../README.md)
 
 ---
 
