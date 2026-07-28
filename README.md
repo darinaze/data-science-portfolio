@@ -29,6 +29,7 @@ I am a Data Scientist and Machine Learning Engineer working in Python across cla
 
 - [Case Study 1 — Duplicate Question Detection (NLP)](#-case-study-1--duplicate-question-detection-nlp)
 - [Case Study 2 — Customer Conversion Prediction (Machine Learning)](#-case-study-2--customer-conversion-prediction-machine-learning)
+- [Case Study 3 — Sales & Demand Forecasting (Time Series)](#-case-study-3--sales--demand-forecasting-time-series)
 - [More case studies (in progress)](#-more-case-studies-in-progress)
 - [Tech stack](#-tech-stack)
 - [Contact](#-contact)
@@ -41,6 +42,7 @@ I am a Data Scientist and Machine Learning Engineer working in Python across cla
 |---|---|---|---|
 | Duplicate Question Detection | Find duplicate questions at scale | **F1 = 0.764** (+7.5% vs baseline), deployed on AWS | Python, NLP, Sentence-BERT, FastAPI |
 | Customer Conversion Prediction | Stop wasting sales calls | **ROC AUC = 0.815**, finds ~65% of subscribers | Python, LightGBM, SHAP |
+| Sales & Demand Forecasting | Plan store stock & staffing | **~11% error (MAPE 10.7%)**, 3× better than baseline | Python, Gradient Boosting, time series |
 
 ---
 
@@ -85,12 +87,28 @@ I am a Data Scientist and Machine Learning Engineer working in Python across cla
 
 ---
 
+## 📈 Case Study 3 — Sales & Demand Forecasting (Time Series)
+
+<p align="center"><img src="./forecast_cover.png" width="720" alt="Sales & Demand Forecasting cover"></p>
+
+**Why:** Retailers must decide how much stock to order for every store. Order too much → money wasted on unsold goods; order too little → empty shelves and lost sales. They need an accurate daily sales forecast to plan inventory and staffing.
+
+**How:** Using 2.5 years of daily sales across 1,115 stores, I built the full pipeline in Python — cleaning, EDA, feature engineering (date parts, promotions, per-store demand level and promo sensitivity), and a **time-based** train/validation split (no peeking into the future). I compared models from a simple baseline up to gradient boosting with a log-transformed target.
+
+**Result:** The final model forecasts daily store sales with **~11% average error (MAPE 10.7%) — about 3× better than the baseline (33.5%)**. At the network level, the forecast tracks actual sales almost exactly.
+
+<p align="center"><img src="./forecast_vs_actual.png" width="760" alt="Predicted vs actual daily sales"></p>
+
+**Tech:** Python · scikit-learn (Gradient Boosting) · pandas · feature engineering · time-series validation
+**Data:** open Rossmann Store Sales dataset (~1M records, 1,115 stores)
+
+🔗 [Case details](./sales-forecasting-case) · [Code](https://github.com/darinaze/rossmann-sales-forecasting)
+
+---
+
 ## 🚧 More case studies (in progress)
 
-> Заміни на реальні, коли зробиш. Тримай той самий формат Why / How / Result + обкладинку.
-
 - **Customer Churn Prediction** — flag customers likely to leave, early enough to act. *(Machine Learning, Python, scikit-learn)*
-- **Sales & Demand Forecasting** — predict future demand to plan stock and budget. *(Time-Series, Python)*
 - **AI Assistant over your documents (LLM / RAG)** — answers questions from your files, with sources. *(LLM, LangChain, Python)*
 
 ---
