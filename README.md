@@ -63,7 +63,7 @@ I am a Data Scientist and Machine Learning Engineer working in Python across cla
 **Tech:** Python · Sentence-Transformers · scikit-learn · FastAPI · Streamlit · AWS EC2 · pytest
 **Data:** open Quora Question Pairs dataset (400K+ pairs)
 
-🔗 [Case details](./duplicate-detection-case) · [Code](https://github.com/darinaze) · *[Live demo](http://34.234.83.233:8501)*
+🔗 [Case details](./duplicate-detection-case) · [Code](https://github.com/darinaze/duplicate-question-detector) · *[Live demo](http://34.234.83.233:8501)*
 
 ---
 
@@ -83,7 +83,7 @@ I am a Data Scientist and Machine Learning Engineer working in Python across cla
 **Tech:** Python · scikit-learn · LightGBM · Hyperopt · SHAP · pandas · Seaborn
 **Data:** open UCI Bank Marketing dataset (41K clients)
 
-🔗 [Case details](./bank-marketing-case) · [Code](https://github.com/darinaze)
+🔗 [Case details](./bank-marketing-case) · [Code](https://github.com/darinaze/Bank-marketing-prediction)
 
 ---
 
