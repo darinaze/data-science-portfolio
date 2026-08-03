@@ -1,65 +1,88 @@
-# AI Support Assistant over Documentation — RAG (LLM)
+# 🤖 AI Support Assistant over Documentation (LLM / RAG)
 
-**100% retrieval recall · 100% refusal accuracy on out-of-scope questions · Cites its sources · No LangChain**
+> **In one line:** An assistant that answers customer questions straight from your own documents — always showing the source, and honestly saying "I don't know" instead of making something up.
 
-## 🎯 The Challenge
+<p align="center"><img src="./cover4_RAG_Assistant.png" width="760" alt="AI Support Assistant over Documentation cover"></p>
 
-![The problem](problem.png)
-
-Support teams answer the same questions again and again, while the answers already sit in the documentation. Every repeat question costs an agent paid minutes — and the customer waits.
-
-A chatbot built on a raw LLM only moves the problem: it **makes up** answers, which in a support setting is worse than giving no answer at all.
-
-The goal: an assistant that is **grounded in the real documentation, transparent about where each answer comes from, and honest enough to say "I don't know"** when the answer isn't in the docs.
-
-## ⚙️ The Solution
-
-![The solution](solution.png)
-
-I built a Retrieval-Augmented Generation (RAG) pipeline **from scratch in plain Python** over a knowledge base of 11 documentation articles:
-
-- Split the docs **one chunk per section**, so each chunk stays focused on a single topic and a fact is never cut in half
-- Embedded every chunk with a **local** model (`all-MiniLM-L6-v2`) — free, no API cost — and stored it in a **Chroma** vector database
-- For each question: retrieve the top-4 most relevant chunks, then let the LLM (`gpt-4o-mini`) answer **only** from that context
-- Added a strict guard so the assistant returns a fixed **"I don't know"** instead of inventing an answer
-- Filtered the cited sources by a **similarity threshold**, so the assistant shows exactly the document it used — not every chunk that happened to be retrieved
-- Built a full evaluation suite (retrieval recall, refusal accuracy, faithfulness and relevancy via an LLM judge) in transparent Python — no black-box framework
-
-## 📈 The Result
-
-- Every answer is **grounded and precisely cited** — the user sees exactly which document it came from
-- On out-of-scope questions the assistant **refuses instead of hallucinating** — the single most important property for a customer-facing bot
-- **Cost-aware by design**: embeddings run locally for free, the paid API is used only for the final answer, keeping cost per query near zero
-- The pipeline is **drop-in**: swap the files in `data/docs/`, rebuild the index, and it works on any product's documentation — no code changes
-
-## 🔢 Metrics
-
-| Metric | Value |
-|---|---|
-| Retrieval Recall@4 | 100% (16 / 16) |
-| Refusal accuracy (out-of-scope) | 100% (5 / 5) |
-| Faithfulness (LLM judge, 1–5) | 5.00 |
-| Answer relevancy (LLM judge, 1–5) | 5.00 |
-
-*Measured on a 21-question evaluation set (16 answerable, 5 out-of-scope). Faithfulness = the answer is fully supported by the retrieved context (no hallucination). Relevancy = the answer actually addresses the question.*
-
-## 🖥 Demo
-
-**Answers from the documentation — and cites the exact source:**
-
-![Answer with source](demo-answer.png)
-
-**Out of scope — refuses instead of inventing an answer:**
-
-![Refusal with no sources](demo-refusal.png)
-
-## 🛠 Tech Stack
-
-Python · sentence-transformers (`all-MiniLM-L6-v2`) · Chroma · OpenAI (`gpt-4o-mini`) · Streamlit · pytest — *no LangChain (framework-free for clarity and stability).*
+**100% retrieval recall · 100% refusal on out-of-scope questions · Every answer cited · Built without LangChain**
 
 ---
 
-🔗 **Full technical implementation:** [rag-support-assistant](https://github.com/darinaze/rag-support-assistant)
+## 🎯 The problem (in plain words)
 
-*Built on a sample product knowledge base — drop in real documentation and rebuild the index.*
+Support teams answer the **same questions over and over** — "How long is the free trial?", "How do I add a teammate?" — while the answers are already written down in the company's documentation. Every repeat question costs an agent **paid minutes** of digging through files, and the customer waits.
 
+Plugging in a normal AI chatbot only moves the problem: it will **invent** an answer that sounds right. In support, a confident wrong answer is worse than no answer at all.
+
+<p align="center"><img src="./problem.png" width="760" alt="Before — the team re-answers what the documents already say"></p>
+
+---
+
+## 💡 What I built
+
+I built an assistant that **reads your own documentation and answers only from it**. It replies in seconds, shows exactly which document the answer came from, and when the answer simply isn't there, it says so instead of guessing.
+
+- **Grounded in your files.** Drop in your documents, rebuild the index, and it's ready — no code changes, and it never answers from anything else.
+- **Every answer is traceable.** The source document is shown with the answer, so anyone can verify it in one click.
+- **Honest by design.** Out-of-scope questions get a plain "I don't have information about that" — no invented facts reaching your customers.
+- **Cheap to run.** The text understanding happens locally for free; the paid AI is used only for the final sentence, keeping the cost per question near zero.
+
+<details>
+<summary>🔧 Under the hood (for technical readers)</summary>
+
+- **Retrieval-Augmented Generation (RAG)** implemented from scratch in plain Python — deliberately **no LangChain**, for stability, transparency and fewer dependencies.
+- **Chunking:** one chunk per document section (`##` heading), so a single fact is never split across chunks or diluted by unrelated topics. This alone cut the distance to the correct chunk from **0.63 → 0.42** and moved it from rank 4 to **rank 1**.
+- **Embeddings:** local `all-MiniLM-L6-v2` (sentence-transformers), stored in a **Chroma** vector database with the source file kept per chunk. The index rebuilds from scratch, so doc edits are always reflected.
+- **Generation:** `gpt-4o-mini` answers strictly from the retrieved context, with a fixed refusal string when the answer isn't present.
+- **Citations:** sources are filtered by a **similarity threshold**, so only genuinely relevant documents are cited — not every retrieved chunk.
+- **Evaluation:** Recall@k, refusal accuracy, and faithfulness / answer relevancy via an LLM judge — all computed in transparent Python. Unit tests with pytest.
+
+</details>
+
+---
+
+## 📈 The impact
+
+<p align="center"><img src="./solution.png" width="760" alt="After — the assistant answers from those same documents, with the source"></p>
+
+| What you get | Result |
+|---|---|
+| Speed | **Seconds instead of minutes** of an agent searching the docs |
+| Accuracy | **100% retrieval recall** — the right document is found for every answerable question |
+| Trust | Every answer arrives **with the source document** attached |
+| Safety | **100% refusal** on out-of-scope questions — no invented answers (faithfulness **5.00 / 5**) |
+| Easy to plug in | Swap in your own `.md` / `.txt` files and rebuild — no code changes |
+
+**Bottom line:** questions that used to eat paid support minutes are now answered instantly from the documentation your team already wrote — with a source attached, and an honest "I don't know" whenever the answer isn't there.
+
+---
+
+## 🖥 Demo & visuals
+
+**A question covered by the docs — answered, with the source shown:**
+
+<p align="center"><img src="./demo-answer.png" width="760" alt="Answer with its source document"></p>
+
+**A question outside the docs — refused instead of invented:**
+
+<p align="center"><img src="./demo-refusal.png" width="760" alt="Honest refusal, no sources"></p>
+
+---
+
+## 🛠 Tech stack
+
+Python · **sentence-transformers** (`all-MiniLM-L6-v2`) · **Chroma** · **OpenAI** (`gpt-4o-mini`) · Streamlit · pytest — *no LangChain*
+
+## 📂 In this repo
+
+- `src/ingest.py` — load documents, split by section, embed, build the vector store
+- `src/rag.py` — retrieve, answer from context, cite sources, refuse when unknown
+- `src/evaluate.py` — Recall@k, refusal accuracy, faithfulness & relevancy (LLM judge)
+- `app.py` — Streamlit demo · `tests/` — unit tests
+- Data: a sample product knowledge base of **11 documentation articles**
+
+🔗 **Full technical implementation:** [rag-support-assistant](https://github.com/darinaze/rag-support-assistant) · ⬅️ [Back to portfolio](../README.md)
+
+---
+
+*Built by Daryna Zelenska — Data Scientist · Machine Learning Engineer · AI / LLM. Have documentation your team keeps re-explaining? Let's talk.*
