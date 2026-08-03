@@ -63,6 +63,7 @@ I am a Data Scientist and Machine Learning Engineer working in Python across cla
 <!-- ![Demo — duplicate detected](./demo_duplicate.png) -->
 
 **Tech:** Python · Sentence-Transformers · scikit-learn · FastAPI · Streamlit · AWS EC2 · pytest
+
 **Data:** open Quora Question Pairs dataset (400K+ pairs)
 
 🔗 [Case details](./duplicate-detection-case) · [Code](https://github.com/darinaze/duplicate-question-detector) · *[Live demo](http://34.234.83.233:8501)*
@@ -83,6 +84,7 @@ I am a Data Scientist and Machine Learning Engineer working in Python across cla
 <!-- ![SHAP — what drives client decisions](./shap.png) -->
 
 **Tech:** Python · scikit-learn · LightGBM · Hyperopt · SHAP · pandas · Seaborn
+
 **Data:** open UCI Bank Marketing dataset (41K clients)
 
 🔗 [Case details](./bank-marketing-case) · [Code](https://github.com/darinaze/Bank-marketing-prediction)
@@ -102,6 +104,7 @@ I am a Data Scientist and Machine Learning Engineer working in Python across cla
 <p align="center"><img src="./forecast_vs_actual.png" width="760" alt="Predicted vs actual daily sales"></p>
 
 **Tech:** Python · scikit-learn (Gradient Boosting) · pandas · feature engineering · time-series validation
+
 **Data:** open Rossmann Store Sales dataset (~1M records, 1,115 stores)
 
 🔗 [Case details](./sales-forecasting-case) · [Code](https://github.com/darinaze/rossmann-sales-forecasting)
@@ -121,6 +124,7 @@ I am a Data Scientist and Machine Learning Engineer working in Python across cla
 <!-- ![How the RAG assistant works](./rag_pipeline.png) -->
 
 **Tech:** Python · sentence-transformers · Chroma · OpenAI (`gpt-4o-mini`) · Streamlit · pytest · *no LangChain*
+
 **Data:** sample product knowledge base (11 documentation articles)
 
 🔗 [Case details](./rag-support-assistant-case) · [Code](https://github.com/darinaze/rag-support-assistant)
