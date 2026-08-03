@@ -30,6 +30,7 @@ I am a Data Scientist and Machine Learning Engineer working in Python across cla
 - [Case Study 1 — Duplicate Question Detection (NLP)](#-case-study-1--duplicate-question-detection-nlp)
 - [Case Study 2 — Customer Conversion Prediction (Machine Learning)](#-case-study-2--customer-conversion-prediction-machine-learning)
 - [Case Study 3 — Sales & Demand Forecasting (Time Series)](#-case-study-3--sales--demand-forecasting-time-series)
+- [Case Study 4 — AI Support Assistant over Documentation (LLM / RAG)](#-case-study-4--ai-support-assistant-over-documentation-llm--rag)
 - [More case studies (in progress)](#-more-case-studies-in-progress)
 - [Tech stack](#-tech-stack)
 - [Contact](#-contact)
@@ -43,6 +44,7 @@ I am a Data Scientist and Machine Learning Engineer working in Python across cla
 | Duplicate Question Detection | Find duplicate questions at scale | **F1 = 0.764** (+7.5% vs baseline), deployed on AWS | Python, NLP, Sentence-BERT, FastAPI |
 | Customer Conversion Prediction | Stop wasting sales calls | **ROC AUC = 0.815**, finds ~65% of subscribers | Python, LightGBM, SHAP |
 | Sales & Demand Forecasting | Plan store stock & staffing | **~11% error (MAPE 10.7%)**, 3× better than baseline | Python, Gradient Boosting, time series |
+| AI Support Assistant (RAG) | Answer support questions from docs, no hallucinations | **100% retrieval recall & refusal**, cites sources | Python, RAG, Chroma, OpenAI |
 
 ---
 
@@ -106,10 +108,28 @@ I am a Data Scientist and Machine Learning Engineer working in Python across cla
 
 ---
 
+## 🤖 Case Study 4 — AI Support Assistant over Documentation (LLM / RAG)
+
+<p align="center"><img src="./cover4_RAG_Assistant.png" width="720" alt="AI Support Assistant over Documentation cover"></p>
+
+**Why:** Support teams answer the same questions again and again, while the answers already sit in the documentation. A chatbot built on a raw LLM will **make up** answers — which, in support, is worse than giving no answer at all. The business needs an assistant that is grounded in the real docs, transparent about its sources, and honest enough to say "I don't know".
+
+**How:** I built a Retrieval-Augmented Generation (RAG) pipeline **from scratch in plain Python (no LangChain)**. Documents are split **one chunk per section**, so each chunk stays focused on a single topic, then embedded with a **local** model (`all-MiniLM-L6-v2`, free — no API cost) and stored in a **Chroma** vector database. For each question the system retrieves the top-4 most relevant chunks and lets the LLM (`gpt-4o-mini`) answer **only** from that context — with a strict guard that returns "I don't know" instead of inventing an answer, and **sources filtered by a similarity threshold** so it cites exactly the document it used. I measured it with a full evaluation suite (retrieval recall, refusal accuracy, and faithfulness / relevancy via an LLM judge).
+
+**Result:** On a 21-question evaluation set: **100% retrieval recall**, **100% refusal accuracy** on out-of-scope questions (no hallucinations), and **5.00 / 5.00** faithfulness and answer relevancy. Moving from fixed-size to section-based chunking cut the distance to the correct chunk from 0.63 to 0.42 and lifted it from rank 4 to **rank 1**. Cost-aware by design — embeddings run locally, the paid API is used only for the final answer — and drop-in: swap the docs, rebuild the index, and it works on any product.
+
+<!-- ![How the RAG assistant works](./rag_pipeline.png) -->
+
+**Tech:** Python · sentence-transformers · Chroma · OpenAI (`gpt-4o-mini`) · Streamlit · pytest · *no LangChain*
+**Data:** sample product knowledge base (11 documentation articles)
+
+🔗 [Case details](./rag-support-assistant-case) · [Code](https://github.com/darinaze/rag-support-assistant)
+
+---
+
 ## 🚧 More case studies (in progress)
 
 - **Customer Churn Prediction** — flag customers likely to leave, early enough to act. *(Machine Learning, Python, scikit-learn)*
-- **AI Assistant over your documents (LLM / RAG)** — answers questions from your files, with sources. *(LLM, LangChain, Python)*
 
 ---
 
