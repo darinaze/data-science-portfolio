@@ -140,9 +140,13 @@ I am a Data Scientist and Machine Learning Engineer working in Python across cla
 ## 🧰 Tech stack
 
 **Languages & data:** Python, SQL
+
 **Machine Learning:** scikit-learn, XGBoost, LightGBM, PyTorch, TensorFlow, pandas, NumPy
+
 **NLP & AI / LLM:** Sentence-Transformers, Hugging Face, LangChain, OpenAI & Anthropic Claude APIs, RAG, vector databases
+
 **MLOps & deployment:** FastAPI, Docker, AWS, Git, pytest
+
 **Explainability & viz:** SHAP, Matplotlib, Seaborn
 
 ---
