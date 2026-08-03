@@ -72,7 +72,7 @@ Python · **Sentence-Transformers** · scikit-learn · **FastAPI** · Streamlit 
 - `…` — API + Streamlit app
 - Data: open **Quora Question Pairs** dataset (400K+ pairs)
 
-🔗 **Full technical implementation:** [duplicate-question-detection](https://github.com/darinaze) · ⬅️ [Back to portfolio](../README.md)
+🔗 **Full technical implementation:** [duplicate-question-detector](https://github.com/darinaze/duplicate-question-detector) · ⬅️ [Back to portfolio](../README.md)
 
 ---
 
